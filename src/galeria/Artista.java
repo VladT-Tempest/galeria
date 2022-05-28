@@ -1,5 +1,4 @@
 package galeria;
-
 import java.util.Calendar;
 
 public class Artista {
@@ -56,12 +55,5 @@ public class Artista {
 		this.fechaNacimiento = fechaNacimiento;
 		this.telefono = telefono;
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }
