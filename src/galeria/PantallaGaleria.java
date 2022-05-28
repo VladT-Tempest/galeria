@@ -34,6 +34,7 @@ public class PantallaGaleria {
 	            x = menu();
 	            switch (x) {
 	                case 1:
+	                	 imprimirLectura();
 	                     break;
 	                case 2:
 	                     break;

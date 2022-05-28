@@ -47,7 +47,6 @@ public class Artista {
 	}
 	public Artista(long codigoArtista, long cedula, String nombre, String apellidos, Calendar fechaNacimiento,
 			long telefono) {
-		super();
 		this.codigoArtista = codigoArtista;
 		this.cedula = cedula;
 		this.nombre = nombre;
