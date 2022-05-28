@@ -4,17 +4,17 @@ import java.util.Calendar;
 
 public class Artista {
 	
-	private long codigoArtita;
+	private long codigoArtista;
 	private long cedula;
 	private String nombre;
 	private String apellidos;
 	private Calendar fechaNacimiento;
 	private long telefono;
-	public long getCodigoArtita() {
-		return codigoArtita;
+	public long getCodigoArtista() {
+		return codigoArtista;
 	}
-	public void setCodigoArtita(long codigoArtita) {
-		this.codigoArtita = codigoArtita;
+	public void setCodigoArtista(long codigoArtista) {
+		this.codigoArtista = codigoArtista;
 	}
 	public long getCedula() {
 		return cedula;
@@ -46,10 +46,10 @@ public class Artista {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-	public Artista(long codigoArtita, long cedula, String nombre, String apellidos, Calendar fechaNacimiento,
+	public Artista(long codigoArtista, long cedula, String nombre, String apellidos, Calendar fechaNacimiento,
 			long telefono) {
 		super();
-		this.codigoArtita = codigoArtita;
+		this.codigoArtista = codigoArtista;
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
