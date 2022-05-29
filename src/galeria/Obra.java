@@ -7,14 +7,14 @@ public class Obra {
 	private String 	titulo;
 	private String fecha;
 	private float precioRef;
-	private String dimesiones;
+	private String dimensiones;
 	
-	public Obra(long codigoObra, String titulo, String fecha, float precioRef, String dimesiones) {
+	public Obra(long codigoObra, String titulo, String fecha, float precioRef, String dimensiones) {
 		this.CodigoObra = codigoObra;
 		this.titulo = titulo;
 		this.fecha = fecha;
 		this.precioRef = precioRef;
-		this.dimesiones = dimesiones;
+		this.dimensiones = dimensiones;
 	}
 	public long getCodigoObra() {
 		return CodigoObra;
@@ -40,11 +40,11 @@ public class Obra {
 	public void setPrecioRef(float precioRef) {
 		this.precioRef = precioRef;
 	}
-	public String getDimesiones() {
-		return dimesiones;
+	public String getDimensiones() {
+		return dimensiones;
 	}
-	public void setDimesiones(String dimesiones) {
-		this.dimesiones = dimesiones;
+	public void setDimensiones(String dimesiones) {
+		this.dimensiones = dimesiones;
 	}
 	
 	
