@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 public class GestionObras 
 {
-	public void imprimirLectura()
+	public static void imprimirLectura()
 	{
 		String linea;
 		long CodigoObra;
@@ -16,26 +16,45 @@ public class GestionObras
 		Calendar fecha;
 		float precioRef;
 		String dimesiones;
-		{
 		
+		System.out.println("entra");
 		try 
 		{
-			BufferedReader br = new BufferedReader(new FileReader("Obra.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("obra.csv"));
 			linea = br.readLine();
 			while (	linea != null)
 			{
 				System.out.println(linea);
+				linea = br.readLine();
 			}
 			
-			
-			
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
-
+		catch (FileNotFoundException ex) {
+			System.err.println(ex.getMessage());	
+			
+		} catch (IOException ex) {
+			System.err.println(ex.getMessage());
+		}		
 		
-	}
 	
 			
-}
+   } 
+   public void buscarObra (String criterio)
+   {
+	   //cuerpo
+   }
+   
+   public void insertarObra ()
+   {
+	   //cuerpo
+   }
+   public void modificarObra (String criterio)
+   {
+	   //cuerpo
+   }
+
+   public void eliminarObra (String criterio)
+   {
+	   //cuerpo
+   }
 }
