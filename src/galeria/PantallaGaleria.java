@@ -52,6 +52,7 @@ public class PantallaGaleria {
 	                	 pausa();
 	                     break;
 	                case 3:
+	                	GestionObras.insertarObra();
 	                	pausa();	
 	                     break;
 	                case 4:

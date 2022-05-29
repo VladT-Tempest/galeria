@@ -1,31 +1,30 @@
-codigoObra,titulo,fecha,precioRef,dimensiones,disponible
-7940034,The Secrets,1/9/2022,54,54-74,false
-5069229,Thank You Mr. Moto,4/17/2022,67,34-74,false
-8456454,Inbetween Worlds,10/20/2021,18,44-94,true
-7339573,Week-End in Havana,2/12/2022,63,04-94,true
-2538062,Goodbye Mr. Chips,10/16/2021,92,54-84,false
-2643947,Robinson Crusoe,4/25/2022,15,54-04,false
-1434905,Friendship!,1/25/2022,41,34-34,false
-2547737, The Ox-Bow Incident,4/27/2022,30,44-04,true
-1911421, The Owl and the Pussycat,1/30/2022,89,54-24,false
-3716682,Buck Privates,2/20/2022,6,74-74,true
-1964845,Mortal Thoughts,9/14/2021,44,94-94,false
-2592381,Crocodile Dundee II,3/9/2022,26,34-84,true
-1818115,Sasori,5/12/2022,40,44-14,true
-1496903,Captain Thunder,10/26/2021,22,64-34,true
-7830577,Ghosts of Mississippi,6/6/2021,52,44-54,false
-3507986,Lonesome Dove,10/20/2021,51,54-44,false
-2333060,The Best Man,5/8/2022,38,84-44,false
-7890192,Zombie Girl: The Movie,6/8/2021,72,74-54,false
-4076818,The Care Bears Adventure in Wonderland,11/22/2021,74,24-94,false
-4086141,Carts of Darkness,12/3/2021,85,64-04,false
-3482246,The Yes Men,12/5/2021,43,04-94,true
-5727230,The Care Bears Adventure in Wonderland,5/4/2022,31,14-34,true
-3343408,The Slaughter Rule,6/5/2021,67,64-34,false
-1473384,Chariots of the Gods,11/28/2021,83,24-54,true
-2501530,Variety Lights,4/9/2022,48,24-04,false
-3259008,Moscow on the Hudson,5/7/2022,78,24-54,true
-6336004,The Climb,7/23/2021,11,34-94,false
-4116888,Assault on a Queen,10/12/2021,38,24-24,true
-4993216,Elite Squad: The Enemy Within,9/5/2021,46,34-64,true
-7897650,Hold That Ghost,7/22/2021,68,64-14,true
+7940034,The Secrets,01/09/2022,54,54-74,false,64245
+5069229,Thank You Mr. Moto,4/17/2022,67,34-74,false,38051
+8456454,Inbetween Worlds,10/20/2021,18,44-94,true,45959
+7339573,Week-End in Havana,02/12/2022,63,abr-94,true,19989
+2538062,Goodbye Mr. Chips,10/16/2021,92,54-84,false,29813
+2643947,Robinson Crusoe,4/25/2022,15,54-04,false,64245
+1434905,Friendship!,1/25/2022,41,34-34,false,38051
+2547737, The Ox-Bow Incident,4/27/2022,30,44-04,true,45959
+1911421, The Owl and the Pussycat,1/30/2022,89,54-24,false,19989
+3716682,Buck Privates,2/20/2022,6,74-74,true,29813
+1964845,Mortal Thoughts,9/14/2021,44,94-94,false,64245
+2592381,Crocodile Dundee II,03/09/2022,26,34-84,true,38051
+1818115,Sasori,05/12/2022,40,44-14,true,45959
+1496903,Captain Thunder,10/26/2021,22,64-34,true,19989
+7830577,Ghosts of Mississippi,06/06/2021,52,44-54,false,29813
+3507986,Lonesome Dove,10/20/2021,51,54-44,false,64245
+2333060,The Best Man,05/08/2022,38,84-44,false,38051
+7890192,Zombie Girl: The Movie,06/08/2021,72,74-54,false,45959
+4076818,The Care Bears Adventure in Wonderland,11/22/2021,74,24-94,false,19989
+4086141,Carts of Darkness,12/03/2021,85,64-04,false,29813
+3482246,The Yes Men,12/05/2021,43,abr-94,true,64245
+5727230,The Care Bears Adventure in Wonderland,05/04/2022,31,14-34,true,38051
+3343408,The Slaughter Rule,06/05/2021,67,64-34,false,45959
+1473384,Chariots of the Gods,11/28/2021,83,24-54,true,19989
+2501530,Variety Lights,04/09/2022,48,24-abr,false,29813
+3259008,Moscow on the Hudson,05/07/2022,78,24-54,true,64245
+6336004,The Climb,7/23/2021,11,34-94,false,38051
+4116888,Assault on a Queen,10/12/2021,38,24-24,true,45959
+4993216,Elite Squad: The Enemy Within,09/05/2021,46,34-64,true,19989
+7897650,Hold That Ghost,7/22/2021,68,64-14,true,29813
