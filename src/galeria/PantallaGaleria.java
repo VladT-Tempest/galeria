@@ -34,7 +34,7 @@ public class PantallaGaleria {
 	            x = menu();
 	            switch (x) {
 	                case 1:
-	                	 GestionObras.imprimirLectura();
+	                	 GestionObras.cargarObras();
 	                     break;
 	                case 2:
 	                     break;

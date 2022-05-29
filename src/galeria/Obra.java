@@ -5,10 +5,11 @@ import java.util.Calendar;
 public class Obra {
 	private long CodigoObra;
 	private String 	titulo;
-	private Calendar fecha;
+	private String fecha;
 	private float precioRef;
 	private String dimesiones;
-	public Obra(long codigoObra, String titulo, Calendar fecha, float precioRef, String dimesiones) {
+	
+	public Obra(long codigoObra, String titulo, String fecha, float precioRef, String dimesiones) {
 		this.CodigoObra = codigoObra;
 		this.titulo = titulo;
 		this.fecha = fecha;
@@ -27,10 +28,10 @@ public class Obra {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public Calendar getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Calendar fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	public float getPrecioRef() {
