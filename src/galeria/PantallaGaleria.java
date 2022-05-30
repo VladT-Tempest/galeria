@@ -11,7 +11,7 @@ public class PantallaGaleria {
 	        System.out.println(" 1. Ver listado de Obras disponibles");
 	        System.out.println(" 2. Buscar una Obra por titulo, artista o year");
 	        System.out.println(" 3. Insertar una Obra");
-	        System.out.println(" 4. Ver listado de clientes registrados en el sistema");
+	        System.out.println(" 4. Modificar una obra");
 	        System.out.println(" 5. Eliminar una obra");
 	        System.out.println(" 6. Ver listado de clientes registrados en el sistema");
 	        System.out.println(" 7. Buscar un Cliente");
@@ -56,12 +56,15 @@ public class PantallaGaleria {
 	                	pausa();	
 	                     break;
 	                case 4:
+	                	GestionObras.modificarObra();
 	                	pausa();
 	                     break;
 	                case 5:
+	                	GestionObras.eliminarObra();
 	                	pausa();
 	                    break;
 	                case 6:
+	                	GestionClientes.mostrarClientes();
 	                	pausa();
 	                    break;
 	                case 7:

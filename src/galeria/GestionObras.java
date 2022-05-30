@@ -124,10 +124,11 @@ public class GestionObras
         		{
         			if (listaObras.get(x).getFecha().contains(buscar))
         			{
+        				System.out.println("TITULO: \t FECHA: \t PRECIO: \t DIMENSIONES");
         				System.out.println(listaObras.get(x).getTitulo()+
-        				"   "+listaObras.get(x).getFecha()+
-        				"   "+ String.valueOf(listaObras.get(x).getPrecioRef())+
-        				"   " +listaObras.get(x).getDimensiones());
+        				"\t"+listaObras.get(x).getFecha()+
+        				"\t"+ String.valueOf(listaObras.get(x).getPrecioRef())+
+        				"\t\t" +listaObras.get(x).getDimensiones());
         			}
         		}
             	pausa();
@@ -165,8 +166,7 @@ public class GestionObras
 		while (true)
 		{
 			System.out.println("Digite el codigo de la obra: ");
-			codigoObra = Long.parseLong(sc.next());
-			
+			codigoObra = sc.nextLong();
 			if (codigoObra > 9999999 || codigoObra < 1000000)
 			{
 				System.out.println("CODIGO INVALIDO, el codigo debe de tener 7 cifras");
@@ -184,9 +184,10 @@ public class GestionObras
 		
 		else
 		{
+			sc.nextLine();
 			System.out.println("Digite el Titulo de la obra: ");
-			titulo = sc.next();
-			
+			titulo = sc.nextLine();
+
 			System.out.println("Digite la fecha de la obra: ");
 			fecha = sc.next();
 			
@@ -206,14 +207,119 @@ public class GestionObras
 			{
 				codigoArtista = insertarArtista();
 				listaObras.add(new Obra(codigoObra, titulo, fecha, precioRef, dimensiones, estado, codigoArtista));
-			}
-			
-			
-			
+			}	
+		}
+	}
+	
+	public static void buscarObraPorCodigo(long codigoObra)
+	{
+		Scanner sc = new Scanner (System.in);
+		for(int x = 0; x < listaObras.size(); x++)
+		{
+			if(listaObras.get(x).getCodigoObra() == codigoObra)
+			{
+				System.out.println("\t CODIGO OBRA  TITULO: \t FECHA: \t PRECIO: \t DIMENSIONES \t ESTADO \t CODIGO ARTISTA ");
+				System.out.println(listaObras.get(x).getCodigoObra()+
+				"\t"+listaObras.get(x).getTitulo()+
+				"\t"+listaObras.get(x).getFecha()+
+				"\t"+ String.valueOf(listaObras.get(x).getPrecioRef())+
+				"\t\t" +listaObras.get(x).getDimensiones()+
+				"\t"+listaObras.get(x).isEstado()+
+				"\t"+listaObras.get(x).getCodigoArtista());
+				
+				System.out.println("------MODIFICACION DE OBRA------");
+				System.out.println("Digite 1 para modificar el codigo de obra ");
+				System.out.println("Digite 2 para modificar el titulo");
+				System.out.println("Digite 3 para modificar la fecha");
+				System.out.println("Digite 4 para modificar el precio");
+				System.out.println("Digite 5 para modificar las dimensiones ");
+				System.out.println("Digite 6 para modificar el estado ");
+				System.out.println("Digite 7 para modificar el codigo del artista \n ");
+		        
+				int tipo = sc.nextInt();
+				
+				System.out.println("Digite el nuevo valor/criterio:  ");
+				String valor = sc.next();
+				
+				switch (tipo) 
+				{
+		            case 1:
+		            	listaObras.get(x).setCodigoObra(Long.parseLong(valor));
+		                break;		                
+		            case 2:		            	
+		            	listaObras.get(x).setTitulo(valor); //titulo solo guarda la primera palabra
+		                 break;
+		            case 3:	
+		            	listaObras.get(x).setFecha(valor);
+		                 break;
+		            case 4:	
+		            	listaObras.get(x).setPrecioRef(Float.parseFloat(valor));
+		                 break;
+		            case 5:	
+		            	listaObras.get(x).setDimensiones(valor);
+		                 break;
+		            case 6:	
+		            	listaObras.get(x).setEstado(Boolean.parseBoolean(valor));
+		                 break;
+		            case 7:	
+		            	listaObras.get(x).setCodigoArtista(Long.parseLong(valor));
+		                 break;				
+			      }
+				
+				System.out.println("TITULO: \t FECHA: \t PRECIO: \t DIMENSIONES");
+				System.out.println(listaObras.get(x).getTitulo()+
+				"\t"+listaObras.get(x).getFecha()+
+				"\t"+ String.valueOf(listaObras.get(x).getPrecioRef())+
+				"\t\t" +listaObras.get(x).getDimensiones());			
+			}				
+		}		
+}
+	
+	
+	public static void modificarObra()
+	{
+		Scanner sc = new Scanner (System.in);
+		System.out.println("Digite el codigo de la obra a modificar:  ");
+		long tempCodigoObra = sc.nextLong();
+		
+		if (!buscarCodigoObra(tempCodigoObra))
+		{
+			System.out.println("OBRA INEXSISTENTE");
+		}
+		else
+		{
+			buscarObraPorCodigo(tempCodigoObra);
+			System.out.println("Obra modificada correctamente");
 		}
 		
+	}
+	
+	public static void eliminarObra()
+	{
+		Scanner sc = new Scanner (System.in);
+		System.out.println("Digite el codigo de la obra a eliminar: ");
+		long tempCodigoObra = sc.nextLong();
 		
-		
+		if (!buscarCodigoObra(tempCodigoObra))
+		{
+			System.out.println("OBRA INEXSISTENTE");
+		}
+		else
+		{
+			for(int x = 0; x < listaObras.size(); x++)
+			{
+				if (listaObras.get(x).getCodigoObra() == tempCodigoObra && listaObras.get(x).isEstado() == false )
+				{
+					System.out.println("Esta obra no puede ser eliminada, ya que esta en proceso de venta....");
+				}
+				if (listaObras.get(x).getCodigoObra() == tempCodigoObra && listaObras.get(x).isEstado() == true )
+				{
+					listaObras.remove(x);
+					System.out.println("Obra eliminada correctamente!");
+				}
+			
+			}
+		}
 	}
 	
 	
@@ -306,11 +412,11 @@ public class GestionObras
 			System.out.println("Se encuentra el artista de su obra en esta lista? S / N");
 			String respuesta = sc.next();
 			
-			if (respuesta.toUpperCase() == "S")
+			if (respuesta.toUpperCase().equals("S"))
 			{
 				return true;
 			}
-			else if (respuesta.toUpperCase() == "N")
+			else if (respuesta.toUpperCase().equals("N"))
 			{
 				return false;
 			}

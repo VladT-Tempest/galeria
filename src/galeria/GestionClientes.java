@@ -5,9 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GestionClientes {
-	
+static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();	
+
 	
 	public static void cargarClientes() 
 	{
@@ -19,7 +21,7 @@ public class GestionClientes {
 		String apellidos;
 		String direccion;
 		long telefono;
-		ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
+		
 		
 		try 
 		{
@@ -50,6 +52,20 @@ public class GestionClientes {
 		}		
 	}
 	
-	
+	public static void mostrarClientes() {
+		Scanner sc = new Scanner (System.in);
+		System.out.println("-------------Listado de clientes registrados:  --------------");
+		System.out.println("CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
+		for(int x = 0; x < listaClientes.size(); x++)
+		{
+			
+			System.out.println(listaClientes.get(x).getCedula()+
+			"\t"+listaClientes.get(x).getNombre()+
+			" "+listaClientes.get(x).getApellidos() +"\t"
+			+ listaClientes.get(x).getDireccionEntrega()+
+			"\t"+listaClientes.get(x).getTelefono());
+			
+	     }
 
+	 }
 }
