@@ -21,7 +21,6 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 		String apellidos;
 		String direccion;
 		long telefono;
-		boolean estado;
 		
 		
 		try 
@@ -37,9 +36,8 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 				apellidos = fields[3];
 				direccion = fields[4];
 				telefono = Long.parseLong(fields[5]);
-				estado = true;
 
-				listaClientes.add(new Cliente(codigoCliente, cedula, nombre, apellidos, direccion, telefono, estado));
+				listaClientes.add(new Cliente(codigoCliente, cedula, nombre, apellidos, direccion, telefono));
 								
 				linea = br.readLine();
 			}
@@ -58,11 +56,12 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 	{
 		Scanner sc = new Scanner (System.in);
 		System.out.println("-------------Listado de clientes registrados:  --------------");
-		System.out.println("CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
+		System.out.println(" CODIGO: \t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO  ");
 		for(int x = 0; x < listaClientes.size(); x++)
 		{
 			
-			System.out.println(listaClientes.get(x).getCedula()+
+			System.out.println(listaClientes.get(x).getCodigoCliente()+ "\t" 
+			+ listaClientes.get(x).getCedula()+
 			"\t"+listaClientes.get(x).getNombre()+
 			" "+listaClientes.get(x).getApellidos() +"\t"
 			+ listaClientes.get(x).getDireccionEntrega()+
@@ -82,6 +81,56 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 		}
 		return false;
 	}
+	
+	public static boolean buscarCedulaCliente(long cedulaCliente)
+	{
+		for(int x = 0; x < listaClientes.size(); x++)
+		{
+			if (cedulaCliente == listaClientes.get(x).getCedula())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static void buscarClientes() 
+	{
+		Scanner sc = new Scanner (System.in);
+		System.out.println("------BUSQUEDA DE CLIENTE------");
+		System.out.println("Digite la cedula del cliente a buscar ");
+
+		long tempCedula = sc.nextLong();
+      
+		for(int x = 0; x < listaClientes.size(); x++)
+        	{
+        		if (listaClientes.get(x).getCedula() == tempCedula)
+        		{
+        			System.out.println("\t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
+    				System.out.println("\t"+listaClientes.get(x).getCedula()+
+    				"\t"+listaClientes.get(x).getNombre()+
+    				" "+ listaClientes.get(x).getApellidos()+
+    				"\t\t" +listaClientes.get(x).getDireccionEntrega()+
+    				"\t"+ String.valueOf(listaClientes.get(x).getTelefono())); // AGREGAR ESTADO
+        		}
+        		
+        		
+        		
+        	}
+
+      } 
+			
+
+	
+	
+	
+	
 	public static void insertarCliente()
 	{
 		boolean estado = true;
@@ -104,9 +153,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 		else
 		{
 			sc.nextLine();
-			System.out.println("Digite el codigo del cliente: ");
-			codigoCliente = sc.nextLong();
-
+	
 			System.out.println("Digite la cedula del cliente: ");
 			cedula = sc.nextLong();
 			
@@ -123,7 +170,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 			telefono = sc.nextLong();
 			
 
-			listaClientes.add(new Cliente(codigoCliente, cedula, nombre, apellidos, direccionEntrega,telefono, estado));
+			listaClientes.add(new Cliente(codigoCliente, cedula, nombre, apellidos, direccionEntrega,telefono));
 	
 		}
 	}
@@ -131,14 +178,14 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 	
 	
 	
-	public static void buscarClientePorCodigo(long codigoCliente)
+	public static void buscarClientePorCodigo(long CodigoCliente)
 	{
 		Scanner sc = new Scanner (System.in);
 		for(int x = 0; x < listaClientes.size(); x++)
 		{
-			if(listaClientes.get(x).getCodigoCliente() == codigoCliente)
+			if(listaClientes.get(x).getCodigoCliente() == CodigoCliente)
 			{
-				System.out.println("\\t CEDULA: \\t NOMBRE COMPLETO: \\t DIRECCION: \\t TELEFONO");
+				System.out.println("\t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
 				System.out.println(listaClientes.get(x).getCodigoCliente()+
 				"\t"+listaClientes.get(x).getCedula()+
 				"\t"+listaClientes.get(x).getNombre()+
@@ -146,7 +193,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 				"\t\t" +listaClientes.get(x).getDireccionEntrega()+
 				"\t"+ String.valueOf(listaClientes.get(x).getTelefono()));
 				
-				System.out.println("------MODIFICACION DE OBRA------");
+				System.out.println("------MODIFICACION DE CLIENTE------");
 				System.out.println("Digite 1 para modificar el codigo del cliente");
 				System.out.println("Digite 2 para modificar la cedula del cliente");
 				System.out.println("Digite 3 para modificar el nombre del cliente");
@@ -162,32 +209,39 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 				switch (tipo) 
 				{
 		            case 1:
-		            	listaClientes.get(x).setCodigoCliente(Long.parseLong(valor));
+		            	if (buscarCodigoCliente(Long.parseLong(valor)))
+		            	{
+		            		System.out.println("Este codigo de cliente ya esta en uso. ");
+		            	}
+		            	else
+		            	{
+		            		listaClientes.get(x).setCodigoCliente(Long.parseLong(valor));
+		            	}
 		                break;		                
 		            case 2:		            	
-		            	listaClientes.get(x).setCedula(Long.parseLong(valor)); //titulo solo guarda la primera palabra
+		            	listaClientes.get(x).setCedula(Long.parseLong(valor)); 
 		                 break;
 		            case 3:	
-		            	listaClientes.get(x).setNombre(valor);
+		            	listaClientes.get(x).setNombre(valor); 
 		                 break;
 		            case 4:	
 		            	listaClientes.get(x).setApellidos(valor);
 		                 break;
 		            case 5:	
-		            	listaClientes.get(x).setDireccionEntrega(valor);
+		            	listaClientes.get(x).setDireccionEntrega(valor); // SOlo guarda la primera palabra
 		                 break;
 		            case 6:	
 		            	listaClientes.get(x).setTelefono(Long.parseLong(valor));
 		                 break;		
 			      }
 				
-				System.out.println("\\t CEDULA: \\t NOMBRE COMPLETO: \\t DIRECCION: \\t TELEFONO");
+				System.out.println("\t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
 				System.out.println(listaClientes.get(x).getCodigoCliente()+
 				"\t"+listaClientes.get(x).getCedula()+
 				"\t"+listaClientes.get(x).getNombre()+
 				" "+ listaClientes.get(x).getApellidos()+
 				"\t\t" +listaClientes.get(x).getDireccionEntrega()+
-				"\t"+ String.valueOf(listaClientes.get(x).getTelefono())); // AGREGAR ESTADO
+				"\t"+ String.valueOf(listaClientes.get(x).getTelefono())); 
 			}				
 		}		
 }
@@ -211,6 +265,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 			
 	}
 	
+	
 	public static void eliminarCliente()
 	{
 		Scanner sc = new Scanner (System.in);
@@ -225,30 +280,41 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 		{
 			for(int x = 0; x < listaClientes.size(); x++)
 			{
-				if (listaClientes.get(x).getCodigoCliente() == tempCodigoCliente && listaClientes.get(x).isEstado() == false )
+				if (Compra.verificarCliente(tempCodigoCliente))
 				{
-					System.out.println("Esta obra no puede ser eliminada, ya que esta en proceso de venta....");
+					System.out.println("Este cliente no puede ser eliminado, ya que esta en proceso de compra....");
+					break;
 				}
-				if (listaClientes.get(x).getCodigoCliente() == tempCodigoCliente && listaClientes.get(x).isEstado() == true )
+				else
 				{
-					System.out.println("Seguro de querer eliminar el cliente??: S/N");
-					String respuesta = sc.next();
-					if (respuesta.equals("S"))
+					if (listaClientes.get(x).getCodigoCliente() == tempCodigoCliente)
 					{
-						System.out.println("Cliente eliminado correctamente!");
-						listaClientes.remove(x);
+						System.out.println("Seguro de querer eliminar el cliente??: S/N");
+						String respuesta = sc.next();
+						if (respuesta.toUpperCase().equals("S"))
+						{
+
+								System.out.println("Cliente eliminado correctamente!");
+								listaClientes.remove(x);
+								break;
+						}
+						if (respuesta.toUpperCase().equals("N"))
+						{
+							System.out.println("Eliminacion cancelada");
+							break;
+						}
 					}
-					if (respuesta.equals("N"))
-					{
-						System.out.println("Eliminacion cancelada");
-					}
+					
 
 				}
 			
 			}
 		}
 	}
-		
+	
+	 
+	 
+	
 	
 	
 	

@@ -7,11 +7,10 @@ public class Cliente {
 	private String apellidos;
 	private String direccionEntrega;
 	private long telefono;
-	private boolean estado;
 	
 
 	public Cliente(long codigoCliente, long cedula, String nombre, String apellidos, String direccionEntrega,
-			long telefono, boolean estado) {
+			long telefono) {
 
 		this.codigoCliente = codigoCliente;
 		this.cedula = cedula;
@@ -19,14 +18,8 @@ public class Cliente {
 		this.apellidos = apellidos;
 		this.direccionEntrega = direccionEntrega;
 		this.telefono = telefono;
-		this.estado = estado;
 	}
-	public boolean isEstado() {
-		return estado;
-	}
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
+	
 	public long getCodigoCliente() {
 		return codigoCliente;
 	}
