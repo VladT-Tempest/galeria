@@ -92,7 +92,7 @@ public class Compra {
 		ArrayList <Long> resumidoArtista= new ArrayList<Long>();
 		ArrayList <Integer> contVentasxArtista= new ArrayList<Integer>();
 		
-		int contador = 0;
+		int contador = 1;
  			
 		long codigoObra;
 		long codigoArtista;
@@ -103,21 +103,30 @@ public class Compra {
 			codigoArtista = GestionObras.buscarCodigoArtista(codigoObra);
 			
 			compras[x] = codigoObra;
-			artistas[x] = codigoArtista;
-			
+			artistas[x] = codigoArtista;	
 				
 		}
+		
 		for(int x = 0; x < artistas.length; x++)
 		{
+			if (resumidoArtista.indexOf(artistas[x]) == -1) { 
+				resumidoArtista.add(artistas[x]);
+				contVentasxArtista.add(contador);
+			} else {
+				contador ++;
+				contVentasxArtista.set(resumidoArtista.indexOf(artistas[x]),contador);
+			}
+			
 			for(int y = x+1; y < artistas.length; y++)
 			{
 				if(artistas[x] == artistas[y])
 				{
 					contador++;
+					contVentasxArtista.set(resumidoArtista.indexOf(artistas[x]),contador);
 				}
 			}
 			
-			contador = 0;
+			contador = 1;
 			
 		}
 
@@ -282,7 +291,7 @@ public class Compra {
 
 		System.out.println("REPORTE DE VENTAS SEGUN FECHA DIGITADA: ");
 		
-		System.out.println("Digite el año de las ventas a buscar: : ");
+		System.out.println("Digite el aï¿½o de las ventas a buscar: : ");
 		String year = sc.next();
 		
 		System.out.println("Digite el Mes de las ventas a buscar: : ");
