@@ -27,24 +27,18 @@ public class Compra {
 		this.codigoObra = codigoObra;
 		this.codigoCliente = codigoCliente;
 	}
-
-	public long getCodigoObra() {
-		return codigoObra;
+	public long getCodigoCompra() {
+		return codigoCompra;
 	}
-	public void setCodigoObra(long codigoObra) {
-		this.codigoObra = codigoObra;
+	public void setCodigoCompra(long codigoCompra) {
+		this.codigoCompra = codigoCompra;
 	}
 	public long getCodigoCliente() {
 		return codigoCliente;
 	}
 	public void setCodigoCliente(long codigoCliente) {
 		this.codigoCliente = codigoCliente;
-	}
-	public long getCodigoCompra() {
-		return codigoCompra;
-	}
-	public void setCodigoCompra(long codigoCompra) {
-		this.codigoCompra = codigoCompra;
+
 	}
 	public String getFecha() {
 		return fecha;
@@ -59,7 +53,12 @@ public class Compra {
 		this.pagado = pagado;
 	}
 	
-	
+	public long getCodigoObra() {
+		return codigoObra;
+	}
+	public void setCodigoObra(long codigoObra) {
+		this.codigoObra = codigoObra;
+	}
 	public static void cargarCompras() 
 	{
 		listaCompras = new ArrayList<Compra>();
@@ -77,10 +76,65 @@ public class Compra {
 		return false;
 	}
 	
+	public static void insertarCodigoArtista(long codigoArtista)
+	{
+		for(int x = 0; x < listaCompras.size(); x++)
+		{
+			
+		}
+	}
 	
-	//public static void reporteTopArtista()
-	////	ArrayList <int> listaNumeroVentas = new ArrayList<Int>();
-	//}
+	
+	public static void reporteTopArtista() {
+		long[] compras = new long[30];
+		long[] artistas = new long[30];
+		long[] artistaUnico = new long[30];
+		ArrayList <Long> resumidoArtista= new ArrayList<Long>();
+		ArrayList <Integer> contVentasxArtista= new ArrayList<Integer>();
+		
+		int contador = 0;
+ 			
+		long codigoObra;
+		long codigoArtista;
+
+		for(int x = 0; x < listaCompras.size(); x++)
+		{
+			codigoObra = listaCompras.get(x).getCodigoObra();
+			codigoArtista = GestionObras.buscarCodigoArtista(codigoObra);
+			
+			compras[x] = codigoObra;
+			artistas[x] = codigoArtista;
+			
+				
+		}
+		for(int x = 0; x < artistas.length; x++)
+		{
+			for(int y = x+1; y < artistas.length; y++)
+			{
+				if(artistas[x] == artistas[y])
+				{
+					contador++;
+				}
+			}
+			
+			contador = 0;
+			
+		}
+
+		
+		
+		
+		for(int x = 0; x < resumidoArtista.size(); x++)
+		{
+			System.out.println(resumidoArtista.get(x)+ "  " + contVentasxArtista.get(x));
+		}
+		
+		//REPETICIONES..............
+		
+
+		
+	}
+	// SE CARGAN DELE ARCHIVO PRUEBA LAS SUPUESTAS COMPRAS
 	public static void cargarComprasPruebas()
 	{
 			String SEPARATOR=",";
@@ -101,9 +155,9 @@ public class Compra {
 					String [] fields = linea.split(SEPARATOR);
 					codigoCompra = Long.parseLong(fields[0]);
 					fecha = fields[1];
-					pagado = Boolean.parseBoolean(fields[3]);
-					codigoObra = Long.parseLong(fields[0]);
-					codigoCliente = Long.parseLong(fields[0]);
+					pagado = Boolean.parseBoolean(fields[2]);
+					codigoObra = Long.parseLong(fields[3]);
+					codigoCliente = Long.parseLong(fields[4]);
 
 					listaCompras.add(new Compra(codigoCompra, fecha,pagado,codigoObra,codigoCliente));
 									
@@ -121,20 +175,21 @@ public class Compra {
 
 	}
 	
-	
+	// SE MUESTRAN LAS COMPRAS ACTUALES
 	public static void mostrarCompras()
 	{
 		System.out.println(" CODIGO COMPRA:  \t FECHA: \t ESTADO: \t CODIGO OBRA \t CODIGO CLIENTE");
 		for(int x = 0; x < listaCompras.size(); x++)
 		{
-			System.out.println("\t" + String.valueOf(listaCompras.get(x).getCodigoCompra())+
-			"\t"+listaCompras.get(x).getFecha()+
-			"\t"+listaCompras.get(x).isPagado()+
-			"\t"+ String.valueOf(listaCompras.get(x).getCodigoObra())+
-			"\t\t" +String.valueOf(listaCompras.get(x).getCodigoCliente())); 
+			
+			System.out.printf("%-20s %10s %10s %10s %10s", listaCompras.get(x).getCodigoCompra(),
+			listaCompras.get(x).getFecha(), listaCompras.get(x).isPagado(),
+			listaCompras.get(x).getCodigoObra(),listaCompras.get(x).getCodigoCliente());
+			System.out.println();
 	
 		}
 	}
+	// METODO QUE VERIFICA SI EL CLIENTE NO ESTA INVOLUCRADO EN ALGUNA OTRA COMPRA
 	public static void verificacionCompraCliente(long codigoCliente, long codigoObra, String fecha)
 	{
 		if (listaCompras.size() > 0)
@@ -191,7 +246,7 @@ public class Compra {
 		return false;
 		
 	}
-	
+	//METODO QUE DIVIDE LA FECHA PARA ENCONTRAR LAS OBRAS COMPRADAS EN ESA FECHA
 	public static boolean dividirFecha(String year, String mes)
 	{
 		int control = 0;
@@ -203,11 +258,9 @@ public class Compra {
 			String[] fechaDividida =  tempFecha.split("/");
 			if (fechaDividida[0].equals(mes) && fechaDividida[2].equals(year))
 			{
-				System.out.println("\t" + String.valueOf(listaCompras.get(x).getCodigoCompra())+
-				"\t"+listaCompras.get(x).getFecha()+
-				"\t"+listaCompras.get(x).isPagado()+
-				"\t"+ String.valueOf(listaCompras.get(x).getCodigoObra())+
-				"\t\t" +String.valueOf(listaCompras.get(x).getCodigoCliente())); 
+				System.out.printf("%-30s %10s %20s %20s %20s", listaCompras.get(x).getCodigoCompra(),
+				listaCompras.get(x).getFecha(), listaCompras.get(x).isPagado(),
+				listaCompras.get(x).getCodigoObra(),listaCompras.get(x).getCodigoCliente());
 				control = 1;
 
 			}
@@ -221,7 +274,7 @@ public class Compra {
 			return true;
 		}
 	}
-
+// METODO QUE ENCUENTRA LAS COMPRAS DEPENDIENDO DE LA FECHA INGRESADA
 	public static void reporteVentasSegunFecha()
 	{
 
@@ -242,6 +295,7 @@ public class Compra {
 		
 		
 	}
+	//METODO DE ELIMINACION DE COMPRA
 	public static void eliminarCompra()
 	{
 		Scanner sc = new Scanner (System.in);
@@ -278,7 +332,7 @@ public class Compra {
 		
 	}
 	
-	
+	//METODO QUE REALIZA COMPRA DE OBRA 
 	public static  void realizarCompra()
 	{
 		String fecha;

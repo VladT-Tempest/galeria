@@ -99,6 +99,7 @@ public class PantallaGaleria {
 	                	pausa();
 	                    break;
 	                case 15:
+	                	Compra.reporteTopArtista();
 	                	pausa();
 	                    break;
 	                case 115:

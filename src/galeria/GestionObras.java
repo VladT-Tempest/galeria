@@ -19,6 +19,7 @@ public class GestionObras
 	static ArrayList <Obra> listaObras = new ArrayList<Obra>();
 	static ArrayList <Artista> listaArtistas = new ArrayList<Artista>();
 	
+	// se cargan las obras del archivo 
 	public static void cargarObras() {
 		String SEPARATOR=",";
 		String linea;
@@ -61,45 +62,50 @@ public class GestionObras
 		
 		
 	}
+	// se muestran las obras dispobiles TRUE
 	public static void mostrarObras() 
 	{
 		System.out.println("-------------Listado de obras disponibles:  --------------");
+		System.out.println("TITULO: \t\t FECHA: \t\t PRECIO: \t\t DIMENSIONES");
 		for(int x = 0; x < listaObras.size(); x++)
 		{
 			if (listaObras.get(x).isEstado())
 			{
-				System.out.println(listaObras.get(x).getTitulo()+
-				"   "+listaObras.get(x).getFecha()+
-				"   "+ String.valueOf(listaObras.get(x).getPrecioRef())+
-				"   " +listaObras.get(x).getDimensiones());
+				System.out.printf("%-30s %10s %20s %20s", listaObras.get(x).getTitulo(),
+				listaObras.get(x).getFecha(), String.valueOf(listaObras.get(x).getPrecioRef()),
+				listaObras.get(x).getDimensiones());
+				System.out.println();
 			}
 		}
 			
 	}
-	
+	//BUSQUEDA DE OBRAS
 	public static void buscarObras() 
 	{
 		Scanner sc = new Scanner (System.in);
+		Scanner sc2 = new Scanner (System.in);
+		//sc2.useDelimiter("\n");
 		System.out.println("------BUSQUEDA OBRA------");
 		System.out.println("Digite 1 para buscar por el TITULO ");
 		System.out.println("Digite 2 para buscar por el ARTISTA");
 		System.out.println("Digite 3 para buscar por el FECHA \n ");
         
 		int tipo = sc.nextInt();
-		
 		System.out.println("Digite criterio de busqueda:  ");
-		String buscar = sc.next();
+		String buscar = sc2.next();
 		
 		switch (tipo) {
             case 1:
             	for(int x = 0; x < listaObras.size(); x++)
         		{
-        			if (listaObras.get(x).getTitulo().equals(buscar))
+        			if (listaObras.get(x).getTitulo().contains(buscar))
         			{
-        				System.out.println(listaObras.get(x).getTitulo()+
-        				"   "+listaObras.get(x).getFecha()+
-        				"   "+ String.valueOf(listaObras.get(x).getPrecioRef())+
-        				"   " +listaObras.get(x).getDimensiones());
+        				System.out.println("TITULO: \t\t FECHA: \t\t PRECIO: \t\t DIMENSIONES");
+        				System.out.printf("%-30s %10s %20s %20s", listaObras.get(x).getTitulo(),
+						listaObras.get(x).getFecha(), String.valueOf(listaObras.get(x).getPrecioRef()),
+						listaObras.get(x).getDimensiones());
+						System.out.println();
+        		
         			}
         		}
             	pausa();
@@ -110,11 +116,11 @@ public class GestionObras
         		{
         			if (listaObras.get(x).getCodigoArtista() == Long.parseLong(buscar))
         			{
-        				System.out.println("TITULO: \t FECHA: \t PRECIO: \t DIMENSIONES");
-        				System.out.println(listaObras.get(x).getTitulo()+
-        				"\t"+listaObras.get(x).getFecha()+
-        				"\t"+ String.valueOf(listaObras.get(x).getPrecioRef())+
-        				"\t\t" +listaObras.get(x).getDimensiones());
+        				System.out.println("TITULO: \t\t FECHA: \t\t PRECIO: \t\t DIMENSIONES");
+        				System.out.printf("%-30s %10s %20s %20s", listaObras.get(x).getTitulo(),
+						listaObras.get(x).getFecha(), String.valueOf(listaObras.get(x).getPrecioRef()),
+						listaObras.get(x).getDimensiones());
+						System.out.println();
         			}
         		}
             	pausa();
@@ -124,11 +130,11 @@ public class GestionObras
         		{
         			if (listaObras.get(x).getFecha().contains(buscar))
         			{
-        				System.out.println("TITULO: \t FECHA: \t PRECIO: \t DIMENSIONES");
-        				System.out.println(listaObras.get(x).getTitulo()+
-        				"\t"+listaObras.get(x).getFecha()+
-        				"\t"+ String.valueOf(listaObras.get(x).getPrecioRef())+
-        				"\t\t" +listaObras.get(x).getDimensiones());
+        				System.out.println("TITULO: \t\t FECHA: \t\t PRECIO: \t\t DIMENSIONES");
+        				System.out.printf("%-30s %10s %20s %20s", listaObras.get(x).getTitulo(),
+						listaObras.get(x).getFecha(), String.valueOf(listaObras.get(x).getPrecioRef()),
+						listaObras.get(x).getDimensiones());
+						System.out.println();
         			}
         		}
             	pausa();
@@ -136,7 +142,18 @@ public class GestionObras
         } 
 			
 	}
-	
+	//metodos usados para saber si se encuentra codigos en la lista
+	public static long  buscarCodigoArtista(long codigoObra)
+	{
+		for(int x = 0; x < listaObras.size(); x++)
+		{
+			if (listaObras.get(x).getCodigoObra() == codigoObra)
+			{
+				return listaObras.get(x).getCodigoArtista();
+			}
+		}
+		return 0;
+	}
 	public static boolean buscarCodigoObra(long codigoObra)
 	{
 		for(int x = 0; x < listaObras.size(); x++)
@@ -148,7 +165,7 @@ public class GestionObras
 		}
 		return false;
 	}
-	
+	//insertar una obra
 	public static void insertarObra()
 	{
 		
@@ -160,12 +177,14 @@ public class GestionObras
 		boolean estado = true;
 		long codigoArtista;
 		Scanner sc = new Scanner (System.in);
+		Scanner sc2 = new Scanner (System.in);
 		
 		
 		
 		while (true)
 		{
 			System.out.println("Digite el codigo de la obra: ");
+			
 			codigoObra = sc.nextLong();
 			if (codigoObra > 9999999 || codigoObra < 1000000)
 			{
@@ -185,8 +204,9 @@ public class GestionObras
 		else
 		{
 			sc.nextLine();
+			sc2.useDelimiter("\n");
 			System.out.println("Digite el Titulo de la obra: ");
-			titulo = sc.nextLine();
+			titulo = sc2.nextLine();
 
 			System.out.println("Digite la fecha de la obra: ");
 			fecha = sc.next();
@@ -218,14 +238,16 @@ public class GestionObras
 		{
 			if(listaObras.get(x).getCodigoObra() == codigoObra)
 			{
-				System.out.println("\t CODIGO OBRA  TITULO: \t FECHA: \t PRECIO: \t DIMENSIONES \t ESTADO \t CODIGO ARTISTA ");
-				System.out.println(listaObras.get(x).getCodigoObra()+
-				"\t"+listaObras.get(x).getTitulo()+
-				"\t"+listaObras.get(x).getFecha()+
-				"\t"+ String.valueOf(listaObras.get(x).getPrecioRef())+
-				"\t\t" +listaObras.get(x).getDimensiones()+
-				"\t"+listaObras.get(x).isEstado()+
-				"\t"+listaObras.get(x).getCodigoArtista());
+	
+				System.out.println("\t CODIGO OBRA: \t  TITULO: \t FECHA: \t PRECIO: \t DIMENSIONES \t ESTADO \t CODIGO ARTISTA ");
+				
+				System.out.printf("%-30s %10s %20s %20s %20s %20s  %20s", String.valueOf(listaObras.get(x).getCodigoObra()),listaObras.get(x).getTitulo(),
+				listaObras.get(x).getFecha(), String.valueOf(listaObras.get(x).getPrecioRef()),
+				listaObras.get(x).getDimensiones(), listaObras.get(x).isEstado(),
+				String.valueOf(listaObras.get(x).getCodigoArtista()));
+		
+				System.out.println();
+
 				
 				System.out.println("------MODIFICACION DE OBRA------");
 				System.out.println("Digite 1 para modificar el codigo de obra ");
@@ -266,16 +288,17 @@ public class GestionObras
 		                 break;				
 			      }
 				
-				System.out.println("TITULO: \t FECHA: \t PRECIO: \t DIMENSIONES");
-				System.out.println(listaObras.get(x).getTitulo()+
-				"\t"+listaObras.get(x).getFecha()+
-				"\t"+ String.valueOf(listaObras.get(x).getPrecioRef())+
-				"\t\t" +listaObras.get(x).getDimensiones());			
+				System.out.println("TITULO: \t\t FECHA: \t\t PRECIO: \t\t DIMENSIONES");
+				System.out.printf("%-30s %10s %20s %20s", listaObras.get(x).getTitulo(),
+				listaObras.get(x).getFecha(), String.valueOf(listaObras.get(x).getPrecioRef()),
+				listaObras.get(x).getDimensiones());
+				System.out.println();
+		
 			}				
 		}		
 }
 	
-	
+	//METODO CON EL DE ARRIBA QUE MODIFICA LA OBRA SEGUN LO QUE SE QUIERA CAMBIAR
 	public static void modificarObra()
 	{
 		Scanner sc = new Scanner (System.in);
@@ -293,7 +316,7 @@ public class GestionObras
 		}
 		
 	}
-	
+	//ELIMINACION DE OBRA
 	public static void eliminarObra()
 	{
 		Scanner sc = new Scanner (System.in);
@@ -322,7 +345,7 @@ public class GestionObras
 		}
 	}
 	
-	
+	// SE INSERTA UN ARTISTA
 	public static long insertarArtista()
 	{
 		Scanner sc = new Scanner (System.in);
@@ -354,6 +377,7 @@ public class GestionObras
 		listaArtistas.add(new Artista(codigoArtista, cedula, nombre, apellidos, fechaNacimiento, telefono));
 		return codigoArtista;
 	}
+	//SE CARGAN LOS ARTISTAS DEL ARCHIVO EN LA LISTA
 	public static void cargarArtistas() 
 	{
 		String SEPARATOR=",";
@@ -394,7 +418,7 @@ public class GestionObras
 			System.err.println(ex.getMessage());
 		}		
 	}
-		
+	//SE MUESTRAN LOS ARTISTAS DE LA LISTA	
 	public static boolean mostrarArtistas() 
 	{
 		Scanner sc = new Scanner (System.in);

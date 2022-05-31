@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class GestionClientes {
 static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();	
 
-	
+	// SE CARGAN LOS CLIENTES DEL ARCHIVO A LA LISTA
 	public static void cargarClientes() 
 	{
 		String SEPARATOR=",";
@@ -51,7 +51,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 			System.err.println(ex.getMessage());
 		}		
 	}
-	
+	// SE MUESTRAN LOS ARCHIVOS DE LA LISTA
 	public static void mostrarClientes() 
 	{
 		Scanner sc = new Scanner (System.in);
@@ -59,17 +59,16 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 		System.out.println(" CODIGO: \t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO  ");
 		for(int x = 0; x < listaClientes.size(); x++)
 		{
-			
-			System.out.println(listaClientes.get(x).getCodigoCliente()+ "\t" 
-			+ listaClientes.get(x).getCedula()+
-			"\t"+listaClientes.get(x).getNombre()+
-			" "+listaClientes.get(x).getApellidos() +"\t"
-			+ listaClientes.get(x).getDireccionEntrega()+
-			"\t"+listaClientes.get(x).getTelefono());
+			System.out.printf("%-15s %10s %10s %10s %10s %20s", listaClientes.get(x).getCodigoCliente(),
+			listaClientes.get(x).getCedula(), listaClientes.get(x).getNombre(),
+			listaClientes.get(x).getApellidos(),listaClientes.get(x).getDireccionEntrega(),
+			listaClientes.get(x).getTelefono());
+			System.out.println();
 			
 	     }
 
 	 }
+	// SE BUSCA SI EL CODIGO DEL CLIENTE SE ENCUENTRA EN LA LISTA
 	public static boolean buscarCodigoCliente(long codigoCliente)
 	{
 		for(int x = 0; x < listaClientes.size(); x++)
@@ -99,7 +98,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 	
 	
 	
-	
+	// SE BUSCA UN CLIENTE Y SE IMPRIME LOS RESULTADOS  DE LA BUSQUEDA
 	public static void buscarClientes() 
 	{
 		Scanner sc = new Scanner (System.in);
@@ -113,11 +112,11 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
         		if (listaClientes.get(x).getCedula() == tempCedula)
         		{
         			System.out.println("\t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
-    				System.out.println("\t"+listaClientes.get(x).getCedula()+
-    				"\t"+listaClientes.get(x).getNombre()+
-    				" "+ listaClientes.get(x).getApellidos()+
-    				"\t\t" +listaClientes.get(x).getDireccionEntrega()+
-    				"\t"+ String.valueOf(listaClientes.get(x).getTelefono())); // AGREGAR ESTADO
+        			System.out.printf("%-30s %10s %20s %20s %20s", listaClientes.get(x).getCodigoCliente(),
+					listaClientes.get(x).getCedula(), listaClientes.get(x).getNombre(),
+					listaClientes.get(x).getApellidos(),listaClientes.get(x).getDireccionEntrega(),
+					listaClientes.get(x).getTelefono());
+					System.out.println();
         		}
         		
         		
@@ -130,7 +129,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 	
 	
 	
-	
+	// SE INSERTA EN LA LSITA UN CLIENTE
 	public static void insertarCliente()
 	{
 		boolean estado = true;
@@ -142,6 +141,8 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 		long telefono;
 		
 		Scanner sc = new Scanner (System.in);
+		Scanner sc2 = new Scanner (System.in);
+		sc2.useDelimiter("\n");
 		
 		System.out.println("Digite el codigo del cliente: ");
 		codigoCliente = sc.nextLong();
@@ -164,7 +165,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 			apellidos = sc.next();
 			
 			System.out.println("Digite la direccion de entrega del cliente: ");
-			direccionEntrega = sc.next();
+			direccionEntrega = sc2.nextLine();
 			
 			System.out.println("Digite el telefono del cliente ");
 			telefono = sc.nextLong();
@@ -185,13 +186,12 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 		{
 			if(listaClientes.get(x).getCodigoCliente() == CodigoCliente)
 			{
-				System.out.println("\t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
-				System.out.println(listaClientes.get(x).getCodigoCliente()+
-				"\t"+listaClientes.get(x).getCedula()+
-				"\t"+listaClientes.get(x).getNombre()+
-				" "+ listaClientes.get(x).getApellidos()+
-				"\t\t" +listaClientes.get(x).getDireccionEntrega()+
-				"\t"+ String.valueOf(listaClientes.get(x).getTelefono()));
+				System.out.println("\t CODIGO: \t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
+				System.out.printf("%-30s %10s %20s %20s %20s", listaClientes.get(x).getCodigoCliente(),
+				listaClientes.get(x).getCedula(), listaClientes.get(x).getNombre(),
+				listaClientes.get(x).getApellidos(),listaClientes.get(x).getDireccionEntrega(),
+				listaClientes.get(x).getTelefono());
+				System.out.println();
 				
 				System.out.println("------MODIFICACION DE CLIENTE------");
 				System.out.println("Digite 1 para modificar el codigo del cliente");
@@ -236,16 +236,14 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 			      }
 				
 				System.out.println("\t CEDULA: \t NOMBRE COMPLETO: \t DIRECCION: \t TELEFONO");
-				System.out.println(listaClientes.get(x).getCodigoCliente()+
-				"\t"+listaClientes.get(x).getCedula()+
-				"\t"+listaClientes.get(x).getNombre()+
-				" "+ listaClientes.get(x).getApellidos()+
-				"\t\t" +listaClientes.get(x).getDireccionEntrega()+
-				"\t"+ String.valueOf(listaClientes.get(x).getTelefono())); 
+				System.out.printf("%-30s %10s %20s %20s %20s", listaClientes.get(x).getCodigoCliente(),
+				listaClientes.get(x).getCedula(), listaClientes.get(x).getNombre(),
+				listaClientes.get(x).getApellidos(),listaClientes.get(x).getDireccionEntrega(),
+				listaClientes.get(x).getTelefono());
 			}				
 		}		
 }
-	
+	//METODO CON EL DE ARRUBA QUE AYUDA A MODIFICAR UN CLIENTE DEPENDIENDO DE LO QUE ESOCJa
 	public static void modificarCliente()
 	{
 		Scanner sc = new Scanner (System.in);
@@ -265,7 +263,7 @@ static ArrayList <Cliente> listaClientes = new ArrayList<Cliente>();
 			
 	}
 	
-	
+	//ELIMINACION DE CLIENTE
 	public static void eliminarCliente()
 	{
 		Scanner sc = new Scanner (System.in);
