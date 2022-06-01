@@ -111,10 +111,14 @@ public class Compra {
 		{
 			if (resumidoArtista.indexOf(artistas[x]) == -1) { 
 				resumidoArtista.add(artistas[x]);
-				contVentasxArtista.add(contador);
+				contVentasxArtista.add(contador);		
 			} else {
-				contador ++;
-				contVentasxArtista.set(resumidoArtista.indexOf(artistas[x]),contador);
+				if(contVentasxArtista.get(resumidoArtista.indexOf(artistas[x])) > 1) {
+					continue;
+				} else {						
+					contador ++;
+					contVentasxArtista.set(resumidoArtista.indexOf(artistas[x]),contador);
+				}
 			}
 			
 			for(int y = x+1; y < artistas.length; y++)
