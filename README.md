@@ -97,27 +97,33 @@ b. Si existe, se deben mostrar los datos del cliente, enumerados, y solicitar el
 que se quiere modificar.
 c. No se puede asignar un número de identificación de un cliente que ya exista, si 
 esto ocurre se muestra un mensaje y no se modifica el cliente.
+
 10.[5] Eliminar un cliente:
 a. Solicitar el número de identificación del cliente a eliminar, si este no existe, se debe 
 mostrar un mensaje y volver al menú principal.
 b. No se puede permitir eliminar un cliente que esté asociado a una compra.
 c. Se debe mostrar un mensaje de confirmación para eliminar el cliente.
+
 11.[20] Realizar compra de una Obra
 a. Para comprar una obra ya deben existir la obra y el cliente, estos datos se van a 
 solicitar usando los códigos de ambos. Se debe autogenerar un código de compra 
 que no exista previamente.
 b. Se debe solicitar toda la información de la compra y validar que no exista una 
 compra de ese cliente para esa obra. Si es así mostrar mensaje de error.
+
 12.[5] Eliminar compra de obra
 a. Solicitar el número de compra a eliminar, si este no existe, se debe mostrar un 
 mensaje y volver al menú principal.
 b. Se debe mostrar un mensaje de confirmación para eliminar la compra.
+
 13.[5] Ver listado de Compras existentes:
 a. Se debe mostrar una lista de todas las Obras que han sido compradas, cliente que 
 la compró, fecha y precio.
+
 14.[5] Ver listado de Compras para un mes y año específico insertado por el usuario
 a. Se debe solicitar mes y año al usuario y mostrar listado de Obras que hayan sido 
 compradas, cliente que la compró, fecha y precio.
+
 15.[5] Ver listado de Artistas más vendidos
 a. Mostrar los artistas más vendidos ordenados de mayor a menor ventas
 16.Se debe crear en el main de la clase ‘PantallaGaleria’ métodos que permitan invocar e 
