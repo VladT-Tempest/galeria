@@ -97,7 +97,6 @@ b. Si existe, se deben mostrar los datos del cliente, enumerados, y solicitar el
 que se quiere modificar.
 c. No se puede asignar un número de identificación de un cliente que ya exista, si 
 esto ocurre se muestra un mensaje y no se modifica el cliente.
-
 10.[5] Eliminar un cliente:
 a. Solicitar el número de identificación del cliente a eliminar, si este no existe, se debe 
 mostrar un mensaje y volver al menú principal.
