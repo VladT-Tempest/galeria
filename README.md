@@ -119,7 +119,7 @@ la compró, fecha y precio.
 a. Se debe solicitar mes y año al usuario y mostrar listado de Obras que hayan sido 
 compradas, cliente que la compró, fecha y precio.
 15. Ver listado de Artistas más vendidos
-a. Mostrar los artistas más vendidos ordenados de mayor a menor ventas
+a. Mostrar los artistas más vendidos ordenados de mayor a menor ventas.
 16. Se debe crear en el main de la clase ‘PantallaGaleria’ métodos que permitan invocar e 
 imprimir el resultado (valor de retorno) de cada una de las funcionalidades del 
 controlador de ‘ControlGaleria’, usted debe:
