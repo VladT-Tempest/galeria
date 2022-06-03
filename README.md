@@ -31,8 +31,10 @@ Usted puede seguir estas funcionalidades para hacer el menú de la aplicación:
 14. Ver listado de Compras para un mes y año específico insertado por el usuario
 15. Ver listado de Artistas más vendidos
 16. Salir
+
 Para el proyecto se solicita implementar las siguientes funcionalidades:
 Para este proyecto se solicita implementar las siguientes funcionalidades:
+
 1. [5] Al iniciar el día se debe:
 a. Crear la colección de Obras llamada listaObras (método en el controlador 
 ‘GestionObras’ que crea instancias de Obra y llena la lista de obras de la clase 
@@ -88,7 +90,6 @@ ControlGaleria. Para ello debe apoyarse en los métodos necesarios de la clase
 Cliente.
 b. No se puede crear un cliente con el mismo código de identificación de uno que ya 
 exist
-
 9. [10] Modificar datos de Cliente:
 a. Se debe solicitar el código de identificación del cliente a modificar, si este no existe, 
 se debe mostrar un mensaje y volver al menú principal.
