@@ -14,6 +14,7 @@ que intervienen en el problema:
 
 Se deben implementar las siguientes funcionalidades, para ello se deben implementar 
 métodos en las diferentes clases para lograrlo. 
+
 Usted puede seguir estas funcionalidades para hacer el menú de la aplicación:
 1. Ver listado de Obras disponibles
 2. Buscar una Obra por título, artista o año
@@ -32,7 +33,6 @@ Usted puede seguir estas funcionalidades para hacer el menú de la aplicación:
 15. Ver listado de Artistas más vendidos
 16. Salir
 
-Para el proyecto se solicita implementar las siguientes funcionalidades:
 Para este proyecto se solicita implementar las siguientes funcionalidades:
 
 1. [5] Al iniciar el día se debe:
