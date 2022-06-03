@@ -1,4 +1,4 @@
-# galeria
+# Galeria
 proyecto galeria
 
 Sistema de Control de una Galería de Arte
